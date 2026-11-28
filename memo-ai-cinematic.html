@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MEMO AI · Intelligence Beyond Limits</title>
+<style>
+:root{--navy:#0c0907;--n2:#3a1a0c;--or:#ff5a1f;--gold:#ffd166;--red:#e8321a;--cy:#ff8a2b;--tx:#fff1e4;--mut:#c9a98f;--line:rgba(255,138,43,.28);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}html.lock{overflow:hidden}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:linear-gradient(#0c0907,#2a1409 55%,#ff5a3c);background-attachment:fixed;color:var(--tx);font:16px/1.6 "Segoe UI",system-ui,-apple-system,Arial,sans-serif;overflow-x:hidden}
+h1,h2,h3,p{margin:0}a{color:inherit;text-decoration:none}
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+.vig{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(3,4,20,.7))}
+main,header{position:relative;z-index:5}
+.lg{display:inline-block;width:38px;height:38px;filter:drop-shadow(0 0 8px rgba(255,138,43,.7))}.lg svg{width:100%;height:100%;display:block}
+.lg.big{width:104px;height:104px;animation:fl 2.4s ease-in-out infinite}.lg.huge{width:clamp(120px,22vw,220px);height:clamp(120px,22vw,220px);filter:drop-shadow(0 0 30px rgba(232,50,26,.8)) drop-shadow(0 0 60px rgba(255,138,43,.5));animation:fl 4s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-8px) rotate(-3deg)}}
+#ld{position:fixed;inset:0;z-index:200;background:#080605;display:grid;place-content:center;justify-items:center;gap:14px;transition:opacity .8s,visibility .8s}#ld.x{opacity:0;visibility:hidden}
+#ld b{font:900 1.6rem Rockwell,"Roboto Slab",Georgia,serif;letter-spacing:.2em}.bar{width:200px;height:3px;background:var(--line);overflow:hidden;border-radius:3px}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cy),var(--red),var(--gold));animation:ld 1.8s ease forwards}@keyframes ld{to{width:100%}}
+#nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;display:flex;align-items:center;gap:20px;padding:10px clamp(14px,3vw,36px);background:linear-gradient(rgba(10,7,5,.85),rgba(10,7,5,0));backdrop-filter:blur(6px)}
+.brand{display:flex;align-items:center;gap:10px;font:900 1.25rem Rockwell,"Roboto Slab",Georgia,serif;letter-spacing:.14em}
+#menu{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}#menu a{padding:7px 11px;border-radius:99px;font-size:.88rem;color:var(--mut);transition:.25s}#menu a:hover,#menu a.on{color:#fff;background:rgba(232,50,26,.18);box-shadow:0 0 16px rgba(232,50,26,.4)}
+#bg{display:none;margin-left:auto}
+.btn{font:inherit;font-weight:700;color:var(--tx);background:rgba(255,138,43,.08);border:1px solid var(--cy);padding:11px 22px;border-radius:12px;cursor:pointer;transition:.25s;box-shadow:0 0 14px rgba(255,138,43,.2)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 0 28px rgba(255,138,43,.6)}.btn:active{transform:scale(.97)}.btn.pr{background:linear-gradient(135deg,var(--or),var(--red));border-color:transparent;box-shadow:0 0 22px rgba(232,50,26,.5)}.btn.pr:hover{box-shadow:0 0 40px rgba(255,90,31,.85)}.btn.sm{padding:6px 14px;font-size:.82rem}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+#home{height:100svh;min-height:560px;position:relative;overflow:hidden}
+.cap{position:absolute;left:clamp(16px,5vw,64px);bottom:16vh;max-width:min(520px,86vw);transition:opacity .6s}.cap.off{opacity:0}
+.cap h2{font:900 clamp(1.6rem,5vw,3rem) Rockwell,"Roboto Slab",Georgia,serif;background:linear-gradient(90deg,var(--gold),var(--or),var(--red));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 14px rgba(232,50,26,.5));animation:ci .8s}.cap p{color:#ffe2c4;margin-top:6px;animation:ci .8s .1s backwards}
+@keyframes ci{from{opacity:0;transform:translateY(18px)}}
+.ov{position:absolute;right:clamp(14px,5vw,64px);top:18vh;width:min(440px,88vw);opacity:0;transform:translateY(30px) scale(.95);pointer-events:none;transition:.8s cubic-bezier(.2,.8,.2,1)}.ov.on{opacity:1;transform:none}
+.glass{background:rgba(34,18,10,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 0 30px rgba(255,138,43,.15)}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mini div{padding:10px;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.3);font-size:.85rem}.mini b{display:block}.up{color:#4dffa6}.dn{color:var(--red)}
+.mini svg{width:100%;height:30px}.mini polyline{fill:none;stroke:var(--gold);stroke-width:2;stroke-dasharray:200;stroke-dashoffset:200}.ov.on polyline{animation:dr 2s forwards}@keyframes dr{to{stroke-dashoffset:0}}
+.fin{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;text-align:center;gap:14px;opacity:0;visibility:hidden;transition:opacity 1.4s;padding:70px 16px 70px}.fin.on{opacity:1;visibility:visible}
+.fin h1{font:900 clamp(3.2rem,13vw,9rem)/.95 Rockwell,"Roboto Slab",Georgia,serif;letter-spacing:.04em;background:linear-gradient(180deg,#fff2b0,var(--gold) 35%,var(--or) 65%,var(--red));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 28px rgba(232,50,26,.6))}
+.tag{letter-spacing:.32em;font-weight:700;font-size:clamp(.8rem,2.4vw,1.3rem);color:var(--cy);text-shadow:0 0 14px var(--cy);animation:fk 3s infinite}@keyframes fk{0%,92%,100%{opacity:1}94%{opacity:.4}96%{opacity:1}98%{opacity:.5}}
+.cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+.hud{position:absolute;left:clamp(16px,5vw,64px);right:clamp(16px,5vw,64px);bottom:20px;display:flex;align-items:center;gap:14px;font-size:.82rem;color:var(--mut);transition:opacity .5s}.hud.off{opacity:0;pointer-events:none}.pb{flex:1;height:3px;background:var(--line);border-radius:3px;overflow:hidden}.pb i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cy),var(--red),var(--gold))}
+#flash{position:fixed;inset:0;z-index:60;background:radial-gradient(circle,#fff,var(--cy) 40%,var(--red));opacity:0;pointer-events:none;transition:opacity .5s}#flash.on{opacity:.95}
+section.s{padding:clamp(70px,12vh,120px) max(16px,calc(50% - 580px));background:linear-gradient(rgba(12,9,7,.8),rgba(12,9,7,.86))}
+section.s:nth-of-type(odd){background:linear-gradient(rgba(30,16,9,.82),rgba(12,9,7,.88))}
+.sh{font:900 clamp(2rem,6vw,3.5rem)/1.05 Rockwell,"Roboto Slab",Georgia,serif;background:linear-gradient(90deg,var(--gold),var(--or),var(--red));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 16px rgba(232,50,26,.45));margin-bottom:10px}
+.lead{color:var(--mut);max-width:62ch;margin-bottom:28px}.note{font-size:.8rem;color:var(--gold);margin-top:12px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.card{background:rgba(34,20,12,.5);border:1px solid var(--line);border-radius:16px;padding:20px;transition:transform .3s,box-shadow .3s,border-color .3s;position:relative}
+.card:hover{transform:translateY(-6px);border-color:var(--red);box-shadow:0 0 30px rgba(232,50,26,.3)}.card h3{margin-bottom:6px;color:var(--gold)}.card p{color:var(--mut);font-size:.92rem}
+.ic{font-size:1.8rem;margin-bottom:8px;filter:drop-shadow(0 0 8px var(--or))}
+.rv{opacity:0;transform:translateY(34px) scale(.98);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}.rv.in{opacity:1;transform:none}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.chips .btn{padding:6px 14px;font-size:.85rem}.chips .btn.on{background:linear-gradient(135deg,var(--or),var(--red));border-color:transparent}
+.cmd{font:inherit;color:var(--tx);text-align:left;cursor:pointer;display:grid;gap:4px}.cmd b{font:700 1.1rem ui-monospace,Consolas,monospace;color:var(--cy)}.cmd span{color:var(--mut);font-size:.88rem}.cmd em{font-style:normal;font-size:.74rem;color:var(--gold)}
+.term{margin-top:16px;font:14px/1.7 ui-monospace,Consolas,monospace;min-height:96px;white-space:pre-wrap;color:#b8ffe9;display:flex;justify-content:space-between;gap:12px}
+.two{display:grid;gap:18px;grid-template-columns:1.5fr 1fr}
+.st{font:inherit;color:var(--tx);cursor:pointer;display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;margin-bottom:8px;padding:12px;border-radius:12px;border:1px solid var(--line);background:rgba(34,20,12,.5);transition:.25s}.st:hover,.st.on{border-color:var(--gold);box-shadow:0 0 18px rgba(255,209,102,.3)}
+canvas.ch{width:100%;height:240px;display:block}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+#gc{width:100%;max-width:560px;aspect-ratio:8/5;display:block;border-radius:14px;border:1px solid var(--cy);box-shadow:0 0 30px rgba(255,138,43,.3);touch-action:none;background:#0c0907}
+.big{font:900 clamp(1.8rem,5vw,2.8rem) Rockwell,"Roboto Slab",Georgia,serif;color:var(--gold);text-shadow:0 0 16px rgba(255,209,102,.5)}
+.bars div{display:grid;grid-template-columns:130px 1fr;gap:10px;align-items:center;margin:8px 0;font-size:.9rem}.bars i{display:block;height:9px;border-radius:9px;background:linear-gradient(90deg,var(--cy),var(--red),var(--gold));width:0;transition:width 1.4s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 12px var(--red)}
+input,textarea{width:100%;font:inherit;color:var(--tx);background:rgba(0,0,0,.35);border:1px solid var(--line);border-radius:11px;padding:10px 12px;margin-bottom:10px}input:focus,textarea:focus{border-color:var(--gold);outline:0}
+details{border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:10px;background:rgba(34,20,12,.45)}summary{cursor:pointer;font-weight:600}details p{color:var(--mut);margin-top:8px}
+.vote{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+footer{position:relative;z-index:5;padding:30px 16px 40px;text-align:center;color:var(--mut);font-size:.85rem;background:#080605}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:150;display:grid;gap:8px;width:min(380px,92vw)}.tt{padding:12px 16px;border-radius:12px;background:rgba(20,10,6,.94);border:1px solid var(--gold);box-shadow:0 0 22px rgba(255,209,102,.3);animation:ci .4s}
+#cur,#ring{position:fixed;top:0;left:0;z-index:300;pointer-events:none;display:none}.cc #cur,.cc #ring{display:block}.cc,.cc *{cursor:none!important}
+#cur{width:8px;height:8px;margin:-4px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold)}#ring{width:36px;height:36px;margin:-18px;border-radius:50%;border:1.5px solid var(--cy);box-shadow:0 0 14px var(--cy);transition:width .2s,height .2s,margin .2s,border-color .2s}#ring.h{width:58px;height:58px;margin:-29px;border-color:var(--red)}
+#wipe{position:fixed;inset:0;z-index:90;background:linear-gradient(90deg,var(--red),var(--or),var(--gold));transform:translateX(-101%);pointer-events:none}#wipe.in{transform:none;transition:transform .38s cubic-bezier(.7,0,.3,1)}#wipe.out{transform:translateX(101%);transition:transform .45s cubic-bezier(.7,0,.3,1)}
+@media(max-width:980px){#bg{display:block}#menu{position:fixed;inset:0;background:rgba(10,7,5,.97);flex-direction:column;justify-content:center;align-items:center;gap:10px;margin:0;transform:translateX(100%);transition:transform .4s}#menu.on{transform:none}#menu a{font-size:1.3rem}#bg{position:relative;z-index:2;z-index:60}.two{grid-template-columns:1fr}.ov{top:12vh}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<canvas id="gl"></canvas><div class="vig"></div>
+<div id="ld"><span class="lg big"></span><b>MEMO AI</b><div class="bar"><i></i></div><small>Loading the experience</small></div>
+<div id="cur"></div><div id="ring"></div><div id="flash"></div><div id="wipe"></div><div id="toast" aria-live="polite"></div>
+<header id="nav"><a class="brand" href="#home"><span class="lg"></span>MEMO</a>
+<nav id="menu"><a href="#home">Home</a><a href="#about">About</a><a href="#features">AI Features</a><a href="#commands">Commands</a><a href="#economy">Economy</a><a href="#arcade">Arcade</a><a href="#stats">Statistics</a><a href="#community">Community</a><a href="#support">Support</a></nav>
+<button class="btn sm" id="bg" aria-label="Menu">Menu</button></header>
+<main>
+<section id="home">
+  <div class="cap" id="cap"><h2 id="ct"></h2><p id="cs"></p></div>
+  <div class="ov" id="o7"><div class="glass"><b>Virtual economy · simulation</b><div class="mini" style="margin-top:10px"><div><b>Forge Motors</b><span class="up">+3.2%</span><svg viewBox="0 0 100 30"><polyline points="0,24 15,20 30,22 45,12 60,15 80,6 100,9"/></svg></div><div><b>Palm Bank</b><span class="dn">−1.1%</span><svg viewBox="0 0 100 30"><polyline points="0,8 20,12 40,10 55,18 75,16 100,22"/></svg></div><div><b>Coin Labs</b><span class="up">+5.6%</span><svg viewBox="0 0 100 30"><polyline points="0,26 25,22 40,24 60,10 80,12 100,3"/></svg></div><div><b>Pixel Foods</b><span class="up">+0.8%</span><svg viewBox="0 0 100 30"><polyline points="0,15 20,17 40,12 60,14 80,10 100,11"/></svg></div></div></div></div>
+  <div class="ov" id="o8"><div class="glass"><b>Arcade</b><div class="mini" style="margin-top:10px"><div><b>Coin Rush</b>Playable below</div><div><b>Ember Racer</b>Concept</div><div><b>Pixel Heist</b>Concept</div><div><b>Trivia Night</b>Concept</div></div></div></div>
+  <div class="fin" id="fin"><span class="lg huge"></span><h1>MEMO AI</h1><p class="tag">INTELLIGENCE BEYOND LIMITS.</p><div class="cta"><a class="btn pr" href="#commands">Explore commands</a><a class="btn" href="#arcade">Play the arcade</a><button class="btn" id="rep">Replay intro</button></div></div>
+  <div class="hud" id="hud"><span id="tc">0:00 / 1:00</span><div class="pb"><i id="pbi"></i></div><button class="btn sm" id="skip">Skip intro</button></div>
+</section>
+
+<section class="s" id="about"><h2 class="sh rv">About MEMO</h2><p class="lead rv">MEMO is a next-generation AI bot concept for Discord communities: it chats, entertains, runs a playful virtual economy and keeps servers tidy. This site is a design showcase, so every number and output you see is a demo.</p>
+<div class="grid"><div class="card rv"><div class="ic">🧠</div><h3>Thinks with you</h3><p>Ask questions, summarize long threads and translate messages without leaving chat.</p></div><div class="card rv"><div class="ic">🎮</div><h3>Plays with you</h3><p>Trivia, music and arcade games keep communities active.</p></div><div class="card rv"><div class="ic">🛡</div><h3>Looks after you</h3><p>Welcome flows, roles and moderation tools set up in a few steps.</p></div></div></section>
+
+<section class="s" id="features"><h2 class="sh rv">AI Features</h2><p class="lead rv">Four things MEMO is designed to do well.</p>
+<div class="grid"><div class="card rv"><div class="ic">💬</div><h3>AI chat</h3><p>Natural conversations, answers and drafts inside any channel.</p></div><div class="card rv"><div class="ic">📝</div><h3>Smart summaries</h3><p>Catch up on a busy channel in three bullet points.</p></div><div class="card rv"><div class="ic">🌍</div><h3>Instant translation</h3><p>Let members talk across languages in the same thread.</p></div><div class="card rv"><div class="ic">⚙️</div><h3>Server automation</h3><p>Welcome messages, roles, polls and auto-moderation.</p></div></div></section>
+
+<section class="s" id="commands"><h2 class="sh rv">Bot Commands</h2><p class="lead rv">Filter by category and tap a command to see a sample reply.</p>
+<div class="chips" id="chips"></div><div class="grid" id="cgrid"></div>
+<div class="card term"><div id="term">Tap a command to preview its reply.</div><button class="btn sm" id="cp">Copy command</button></div><p class="note">Sample command list and replies. They are not output from a running bot.</p></section>
+
+<section class="s" id="economy"><h2 class="sh rv">Virtual Economy</h2><p class="lead rv">Trade fictional companies with virtual MEMO coins. Prices come from a simulation running in your browser.</p>
+<div class="two"><div class="card"><div class="row" style="justify-content:space-between;margin:0 0 8px"><b id="sn">Forge Motors</b><span class="big" id="sp">0</span></div><canvas class="ch" id="ec"></canvas><div class="row"><button class="btn pr" id="buy">Buy 1 share</button><button class="btn" id="sell">Sell 1 share</button><span id="own" class="mut"></span></div></div>
+<div><div class="card" style="margin-bottom:12px"><span class="mut">Virtual wallet</span><div class="big" id="bal">1,000</div><small id="pv"></small></div><div id="stl"></div></div></div><p class="note">Simulation only. Not live market data, and no real money or crypto is involved.</p></section>
+
+<section class="s" id="arcade"><h2 class="sh rv">Games &amp; Arcade</h2><p class="lead rv">Coin Rush is playable right now. Move your mouse or finger, or use the arrow keys. Catch gold coins and dodge the red bombs.</p>
+<div class="two"><div><canvas id="gc" width="480" height="300"></canvas><div class="row"><button class="btn pr" id="gs">Start game</button><span>Score <b id="gsc">0</b> · Lives <b id="glv">3</b> · Best <b id="gbs">0</b></span></div></div>
+<div class="grid" style="grid-template-columns:1fr"><div class="card"><h3>Ember Racer</h3><p>Concept: race through the forge district for coins.</p></div><div class="card"><h3>Pixel Heist</h3><p>Concept: co-op puzzle missions for your server.</p></div></div></div></section>
+
+<section class="s" id="stats"><h2 class="sh rv">Statistics</h2><p class="lead rv">Sample figures that show how the dashboard could look.</p>
+<div class="grid"><div class="card rv"><span class="mut">Servers</span><div class="big num" data-v="12480">0</div></div><div class="card rv"><span class="mut">Members</span><div class="big num" data-v="3200000">0</div></div><div class="card rv"><span class="mut">Commands per day</span><div class="big num" data-v="1800000">0</div></div><div class="card rv"><span class="mut">Uptime %</span><div class="big num" data-v="99.9" data-d="1">0</div></div></div>
+<div class="card rv bars" style="margin-top:16px"><h3>Commands by category</h3><div><span>AI Chat</span><i data-w="82"></i></div><div><span>Entertainment</span><i data-w="64"></i></div><div><span>Economy</span><i data-w="47"></i></div><div><span>Server Management</span><i data-w="35"></i></div></div><p class="note">Sample figures. MEMO is not reporting live statistics on this page.</p></section>
+
+<section class="s" id="community"><h2 class="sh rv">Community</h2><p class="lead rv">Suggest a feature and vote on ideas. Entries stay in this browser tab only.</p>
+<div class="two"><div class="card"><input id="si" placeholder="Your idea for MEMO" maxlength="80"><button class="btn pr" id="sa">Add suggestion</button><div id="sl" style="margin-top:12px"></div></div>
+<div class="grid" style="grid-template-columns:1fr"><div class="card"><h3>Events</h3><p>Weekly trivia nights and arcade tournaments.</p></div><div class="card"><h3>Showcase</h3><p>Share your server setup and favorite commands.</p></div></div></div></section>
+
+<section class="s" id="support"><h2 class="sh rv">Support</h2><p class="lead rv">Quick answers and a contact form.</p>
+<div class="two"><div><details><summary>Is MEMO live?</summary><p>This is a concept website. There is no running bot behind it yet.</p></details><details><summary>Do I need to log in?</summary><p>No. There is no login or Discord connection on this site.</p></details><details><summary>Are the coins real?</summary><p>No. MEMO coins are virtual and have no monetary value.</p></details><details><summary>Where do the statistics come from?</summary><p>They are sample numbers made for the design.</p></details></div>
+<form class="card" id="cf"><input placeholder="Your name" required><input type="email" placeholder="Email" required><textarea rows="4" placeholder="How can we help?" required></textarea><button class="btn pr">Send message</button></form></div></section>
+</main>
+<footer><b>MEMO AI</b> · Intelligence Beyond Limits. · Demo website with sample data.</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches,MOB=innerWidth<760;
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),eo=x=>1-Math.pow(1-cl(x),3),lp=(a,b,t)=>a+(b-a)*t,rd=(a,b)=>Math.random()*(b-a)+a;
+const LOGO='<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 100 100"><defs><clipPath id="cc"><circle cx="50" cy="50" r="45"/></clipPath><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd166"/><stop offset=".5" stop-color="#ff5a1f"/><stop offset="1" stop-color="#e8321a"/></linearGradient></defs><circle cx="50" cy="50" r="48" fill="#0c0907" stroke="url(#g)" stroke-width="4"/><image href="data:image/jpeg;base64,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" x="5" y="5" width="90" height="90" clip-path="url(#cc)" preserveAspectRatio="xMidYMid slice"/></svg>';
+$$('.lg').forEach(e=>e.innerHTML=LOGO);
+const LI=new Image();LI.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(LOGO);
+function toast(m){const d=document.createElement('div');d.className='tt';d.textContent=m;$('#toast').appendChild(d);setTimeout(()=>d.remove(),3200)}
+/* ---------- 3D ---------- */
+let S3=null;
+function tex(w,h,fn){const c=document.createElement('canvas');c.width=w;c.height=h;fn(c.getContext('2d'),w,h);const t=new THREE.CanvasTexture(c);t.fn=fn;return t}
+function init3D(){
+const R=new THREE.WebGLRenderer({canvas:$('#gl'),antialias:!MOB});R.setPixelRatio(Math.min(devicePixelRatio,MOB?1.25:1.75));
+const sc=new THREE.Scene();sc.background=new THREE.Color(0x0c0907);sc.fog=new THREE.Fog(0x2a1209,20,170);
+const cam=new THREE.PerspectiveCamera(55,1,.1,700);
+const rs=()=>{R.setSize(innerWidth,innerHeight,false);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix()};rs();addEventListener('resize',rs);
+const M=(c,o)=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:.6,metalness:.2},o)),B=(c,o)=>new THREE.MeshBasicMaterial(Object.assign({color:c},o));
+const mesh=(g,m,x,y,z,p)=>{const o=new THREE.Mesh(g,m);o.position.set(x,y,z);(p||sc).add(o);return o},bx=(w,h,d)=>new THREE.BoxGeometry(w,h,d),PL=(w,h)=>new THREE.PlaneGeometry(w,h);
+const logoDraw=(x,cx,cy,s)=>{if(LI.complete&&LI.naturalWidth)x.drawImage(LI,cx-s/2,cy-s/2,s,s)};
+const sunT=tex(256,256,x=>{const g=x.createLinearGradient(0,28,0,228);g.addColorStop(0,'#ffe066');g.addColorStop(.5,'#ff5a1f');g.addColorStop(1,'#e8321a');x.fillStyle=g;x.beginPath();x.arc(128,128,100,0,7);x.fill();x.globalCompositeOperation='destination-out';for(let i=0;i<6;i++)x.fillRect(0,138+i*16,256,2+i*2.5)});
+const scrT=tex(512,320,(x,w,h)=>{const g=x.createLinearGradient(0,0,0,h);g.addColorStop(0,'#3a1a0c');g.addColorStop(1,'#4a1a0c');x.fillStyle=g;x.fillRect(0,0,w,h);logoDraw(x,w/2,130,150);x.fillStyle='#fff';x.font='bold 40px sans-serif';x.textAlign='center';x.fillText('MEMO AI',w/2,265)});
+LI.onload=()=>{scrT.fn(scrT.image.getContext('2d'),512,320);scrT.needsUpdate=true};
+const panelT=(t,l,c)=>tex(512,340,(x,w,h)=>{x.fillStyle='rgba(30,14,8,.8)';x.fillRect(0,0,w,h);x.strokeStyle=c;x.lineWidth=4;x.strokeRect(2,2,w-4,h-4);x.fillStyle=c;x.font='bold 30px sans-serif';x.fillText(t,24,50);l.forEach((s,i)=>{x.fillStyle=i%2?'rgba(255,90,31,.3)':'rgba(255,138,43,.22)';x.fillRect(i%2?100:24,76+i*62,w-124,46);x.fillStyle='#fff';x.font='22px sans-serif';x.fillText(s,i%2?116:40,107+i*62)})});
+const cardT=(t,s,c)=>tex(260,360,(x,w,h)=>{x.fillStyle='rgba(30,14,8,.85)';x.fillRect(0,0,w,h);x.strokeStyle=c;x.lineWidth=5;x.strokeRect(3,3,w-6,h-6);logoDraw(x,w/2,100,90);x.fillStyle=c;x.textAlign='center';x.font='bold 28px sans-serif';x.fillText(t,w/2,215);x.fillStyle='#ffe2c4';x.font='19px sans-serif';x.fillText(s,w/2,260)});
+/* studio */
+const S=new THREE.Group();sc.add(S);sc.add(new THREE.AmbientLight(0xff9a5a,.7));
+mesh(PL(40,30),M(0x14100e,{metalness:.6,roughness:.35}),0,0,0,S).rotation.x=-Math.PI/2;
+mesh(bx(40,14,.2),M(0x2a1a12),0,7,-4,S);mesh(bx(9,.08,.08),B(0xff8a2b),-3,3.4,-3.85,S);mesh(bx(9,.08,.08),B(0xe8321a),-3,3,-3.85,S);
+mesh(PL(4,3),B(0xffffff,{map:sunT,transparent:true}),4,3.2,-3.85,S);
+mesh(bx(5,.12,2.2),M(0x4a3020),0,.85,0,S);[[-2.3,-.9],[2.3,-.9],[-2.3,.9],[2.3,.9]].forEach(p=>mesh(bx(.1,.85,.1),M(0x222244),p[0],.42,p[1],S));
+mesh(bx(1.6,.06,1.1),M(0x3a3a42,{metalness:.7}),0,.94,.1,S);
+const lid=new THREE.Group();lid.position.set(0,.97,-.43);S.add(lid);mesh(bx(1.6,1,.04),M(0x2a2a32,{metalness:.7}),0,.5,0,lid);mesh(PL(1.45,.88),B(0xffffff,{map:scrT}),0,.5,.025,lid);
+const iron=M(0x2b2b33,{metalness:.9,roughness:.35}),AV=new THREE.Group();AV.position.set(1.9,.91,.2);S.add(AV);
+mesh(bx(.9,.14,.5),iron,0,.07,0,AV);mesh(bx(.4,.2,.3),iron,0,.24,0,AV);mesh(bx(1.1,.16,.46),iron,0,.42,0,AV);mesh(new THREE.ConeGeometry(.2,.5,8),iron,.78,.42,0,AV).rotation.z=-Math.PI/2;
+const hot=mesh(bx(.7,.06,.08),B(0xff6a1a),0,.53,0,AV),fl=new THREE.PointLight(0xff5a1f,2.2,6);fl.position.set(1.9,1.8,.4);S.add(fl);
+const sa=new Float32Array(180),sg=new THREE.BufferGeometry();sg.setAttribute('position',new THREE.BufferAttribute(sa,3));AV.add(new THREE.Points(sg,new THREE.PointsMaterial({color:0xffb23e,size:.07,transparent:true,opacity:.95})));const sv=Array.from({length:60},()=>({x:0,y:.55,z:0,vx:0,vy:0,vz:0,l:Math.random()}));
+const sl=new THREE.PointLight(0xff8a2b,0,7);sl.position.set(0,1.6,1);S.add(sl);
+mesh(new THREE.SphereGeometry(.18,12,12),B(0xffb347),-1.9,1.55,-.5,S);mesh(new THREE.CylinderGeometry(.03,.05,.7,6),M(0x333355),-1.9,1.15,-.5,S);
+const wl=new THREE.PointLight(0xff8a3c,1.7,12);wl.position.set(-1.9,1.7,-.2);S.add(wl);const rl=new THREE.PointLight(0xe8321a,1.2,16);rl.position.set(3,3,2);S.add(rl);
+const P=new THREE.Group();P.position.set(0,1.9,.3);S.add(P);
+const pd=[['MEMO AI Chat',['Summarize this thread','3 key points ready ✓','Play a synthwave mix','Queued 12 tracks ♪'],'#ff8a2b'],['Server Tools',['Set up welcome','Auto-mod is on ✓','Create a poll','Poll posted ✓'],'#ffd166'],['Economy',['Check my balance','1,000 MEMO coins','Invest in Palm Bank','Order placed ✓'],'#e8321a']];
+const panels=pd.map((d,i)=>{const a=(i-1)*.9,p=mesh(PL(1.5,1),B(0xffffff,{map:panelT(...d),transparent:true,side:THREE.DoubleSide,depthWrite:false}),Math.sin(a)*2.3,0,Math.cos(a)*2.3-1,P);p.rotation.y=a;return p});
+const K=new THREE.Group();S.add(K);const ct=tex(128,128,x=>{x.fillStyle='#ffd166';x.fillRect(0,0,128,128);x.strokeStyle='#b8860b';x.lineWidth=8;x.beginPath();x.arc(64,64,54,0,7);x.stroke();x.fillStyle='#8a5a00';x.font='bold 70px sans-serif';x.textAlign='center';x.fillText('M',64,88)});
+const fm=()=>new THREE.MeshStandardMaterial({map:ct,metalness:.6,roughness:.3,emissive:0x331a00}),cm=[M(0xffd166,{metalness:.9,roughness:.25,emissive:0x442200}),fm(),fm()];
+const coins=Array.from({length:MOB?14:26},(_,i)=>{const g=new THREE.Group(),a=i*2.4,r=1.4+(i%5)*.45;g.userData={x:Math.cos(a)*r*1.5,y:1.3+(i%7)*.4,z:Math.sin(a)*r*.5+1,i};mesh(new THREE.CylinderGeometry(.2,.2,.05,24),cm,0,0,0,g).rotation.x=Math.PI/2;K.add(g);return g});
+const Q=new THREE.Group();S.add(Q);const cards=[['AI Chat','Ask, summarize, translate','#ff8a2b'],['Entertainment','Games, music, trivia','#ff5a1f'],['Server Management','Welcome, roles, mod','#e8321a']].map((d,i)=>mesh(PL(1.3,1.8),B(0xffffff,{map:cardT(...d),transparent:true,side:THREE.DoubleSide,depthWrite:false}),(i-1)*1.6,1.8,1.5,Q));
+/* city */
+const C=new THREE.Group();C.position.z=-120;sc.add(C);
+mesh(PL(400,400),B(0x1a0d08),0,0,0,C).rotation.x=-Math.PI/2;const grid=new THREE.GridHelper(400,80,0xe8321a,0xff8a2b);grid.position.y=.03;C.add(grid);
+const winT=tex(64,128,(x,w,h)=>{x.fillStyle='#0a0f33';x.fillRect(0,0,w,h);for(let i=0;i<8;i++)for(let j=0;j<16;j++)if(Math.random()<.45){x.fillStyle=['#ffd166','#ff8a2b','#ff5a1f','#e8321a'][(Math.random()*4)|0];x.fillRect(i*8+1,j*8+2,5,4)}});winT.wrapS=winT.wrapT=THREE.RepeatWrapping;
+const wm=[0xffb070,0xffa070,0xffd9a0,0xff7a5a].map(c=>B(c,{map:winT}));
+for(let i=0;i<(MOB?36:72);i++){const sd=i%2?1:-1,w=3+Math.random()*6,h=8+Math.random()*(i%7==0?55:30),d=3+Math.random()*6,g=bx(w,h,d),uv=g.attributes.uv;for(let k=0;k<uv.count;k++)uv.setXY(k,uv.getX(k)*w/5,uv.getY(k)*h/9);mesh(g,wm[i%4],sd*(14+Math.random()*42),h/2,-75+Math.random()*95,C)}
+mesh(PL(90,90),B(0xffffff,{map:sunT,transparent:true,fog:false}),0,34,-92,C);
+const palms=[];const dk=B(0x05071f),cone=new THREE.ConeGeometry(.35,4,3);
+for(let i=0;i<10;i++){const sd=i%2?1:-1,g=new THREE.Group();g.position.set(sd*9,0,16-(i>>1)*10);C.add(g);mesh(new THREE.CylinderGeometry(.22,.38,7,6),dk,0,3.5,0,g).rotation.z=sd*.12;const cr=new THREE.Group();cr.position.set(-sd*.45,7,0);g.add(cr);for(let k=0;k<7;k++){const w=new THREE.Group();w.rotation.y=k*.9;const l=new THREE.Mesh(cone,dk);l.position.x=1.6;l.rotation.z=-Math.PI/2-.35;w.add(l);cr.add(w)}palms.push(cr)}
+const sp=(n,sx,sy,sz,y0,z0,sz2)=>{const a=new Float32Array(n*3);for(let i=0;i<n;i++){a[i*3]=rd(-sx,sx);a[i*3+1]=y0+Math.random()*sy;a[i*3+2]=z0+rd(-sz,sz)}const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(a,3));return g};
+const stars=new THREE.Points(sp(MOB?250:600,300,200,200,30,-150),new THREE.PointsMaterial({color:0xffffff,size:1.6,sizeAttenuation:false,fog:false}));C.add(stars);
+const dust=new THREE.Points(sp(MOB?40:90,7,5,6,0,0),new THREE.PointsMaterial({color:0xffd166,size:.05,transparent:true,opacity:.8}));S.add(dust);
+const dust2=new THREE.Points(sp(MOB?60:140,30,25,40,0,0),new THREE.PointsMaterial({color:0xff5a1f,size:.18,transparent:true,opacity:.7}));C.add(dust2);
+const cT=tex(128,64,(x)=>{const g=x.createRadialGradient(64,32,2,64,32,60);g.addColorStop(0,'rgba(255,170,120,.9)');g.addColorStop(1,'rgba(255,90,120,0)');x.fillStyle=g;x.fillRect(0,0,128,64)});
+const clouds=Array.from({length:7},(_,i)=>{const s=new THREE.Sprite(new THREE.SpriteMaterial({map:cT,transparent:true,opacity:.55,fog:false,depthWrite:false}));s.scale.set(50,18,1);s.position.set(rd(-90,90),rd(32,60),rd(-95,-50));C.add(s);return s});
+const cars=Array.from({length:MOB?6:12},(_,i)=>{const m=mesh(bx(.6,.35,1.4),B(i%2?0xe8321a:0xffd166),(i%2?1:-1)*rd(2,9),.4,rd(-80,25),C);m.userData.v=rd(10,22);return m});
+const KF=[[0,[0,2.4,8],[0,1.2,0]],[7,[1.4,1.7,3.4],[0,1.15,0]],[14,[0,1.7,4.2],[0,1.6,0]],[21,[-1.8,1.9,5],[0,1.6,0]],[28,[0,1.7,4.6],[0,1.7,0]],[35.2,[0,1.6,3.6],[0,1.6,0]],[35.6,[0,2.4,-92],[0,7,-135]],[44,[0,3,-103],[0,8,-135]],[50,[6,4.2,-108],[0,7,-135]],[55,[0,3.4,-98],[0,9,-135]],[60,[0,3.2,-96],[0,9,-135]]];
+function camAt(t){let i=0;while(i<KF.length-2&&t>KF[i+1][0])i++;const a=KF[i],b=KF[i+1],u=cl((t-a[0])/(b[0]-a[0])),e=u*u*(3-2*u);return[a[1].map((v,j)=>lp(v,b[1][j],e)),a[2].map((v,j)=>lp(v,b[2][j],e))]}
+let px=0,py=0;addEventListener('pointermove',e=>{px=e.clientX/innerWidth-.5;py=e.clientY/innerHeight-.5});
+S3={upd(tm,now){const s=now/1000,o=eo((tm-7)/3);S.visible=tm<35.6;
+ lid.rotation.x=lp(Math.PI/2,-.3,o);sl.intensity=o*1.4;sv.forEach((p,i)=>{p.l+=.02;if(p.l>1){p.l=0;p.x=rd(-.3,.3);p.y=.55;p.z=rd(-.05,.05);p.vx=rd(-.02,.02);p.vy=rd(.02,.05);p.vz=rd(-.01,.01)}p.vy-=.0012;p.x+=p.vx;p.y+=p.vy;p.z+=p.vz;sa[i*3]=p.x;sa[i*3+1]=p.y;sa[i*3+2]=p.z});sg.attributes.position.needsUpdate=true;hot.material.color.setHSL(.05,1,.5+.08*Math.sin(s*5));fl.intensity=2+Math.sin(s*9)*.4;
+ const pv=eo((tm-14)/2)*(1-eo((tm-28)/1.2));P.visible=pv>.01;P.scale.setScalar(Math.max(pv,.001));P.rotation.y=Math.sin(s*.6)*.25;panels.forEach((p,i)=>p.position.y=Math.sin(s*1.2+i)*.08);
+ const kv=eo((tm-21)/1.5);K.visible=kv>.01;coins.forEach(g=>{const d=g.userData;g.position.set(d.x,d.y+Math.sin(s*1.4+d.i)*.25,d.z);g.rotation.y=s*2+d.i;g.scale.setScalar(Math.max(kv,.001))});
+ const qv=eo((tm-28)/1.5);Q.visible=qv>.01;Q.scale.setScalar(Math.max(qv,.001));cards.forEach((c,i)=>c.position.y=1.8+Math.sin(s+i*2)*.1);
+ palms.forEach((p,i)=>p.rotation.z=Math.sin(s*.9+i)*.05);grid.position.z=(s*7)%5;
+ cars.forEach(c=>{c.position.z-=c.userData.v/60;if(c.position.z<-80)c.position.z=26});clouds.forEach(c=>{c.position.x+=.015;if(c.position.x>100)c.position.x=-100});
+ dust.rotation.y=s*.05;dust2.rotation.y=s*.02;
+ const k=camAt(tm),fin=tm>=55?1:0;cam.position.set(k[0][0]+fin*(px*6+Math.sin(s*.3)*1.5),k[0][1]+fin*(-py*1.5),k[0][2]);cam.lookAt(k[1][0],k[1][1],k[1][2]);R.render(sc,cam)}}}
+/* ---------- timeline ---------- */
+const SC=[[0,'The Forge','Late night at the forge. One anvil. One idea.'],[7,'Power On','MEMO wakes up.'],[14,'AI Intelligence','Glowing chat panels appear around the laptop.'],[21,'MEMO Coins','Virtual coins drift through the room.'],[28,'Commands','AI chat, entertainment and server management.'],[36,'The Forge District','Into the glowing night.'],[44,'Virtual Economy','A simulated market of fictional companies.'],[50,'Arcade','Browser games with a futuristic edge.'],[55,'','']];
+let T0=0,tm=0,done=false,started=false,last=-1,lsec=-1,lflash=false;
+function start(){done=false;started=true;T0=performance.now();last=-1;document.documentElement.classList.add('lock');$('#fin').classList.remove('on');$('#hud').classList.remove('off')}
+function endIntro(){done=true;tm=60;document.documentElement.classList.remove('lock');$('#fin').classList.add('on');$('#hud').classList.add('off');$('#cap').classList.add('off');$('#o7').classList.remove('on');$('#o8').classList.remove('on');$('#flash').classList.remove('on')}
+function fr(now){requestAnimationFrame(fr);if(document.hidden)return;
+ if(!done&&started){tm=(now-T0)/1000;if(tm>=60)endIntro()}
+ if(S3)S3.upd(tm,now);
+ if(done)return;
+ let i=0;SC.forEach((c,j)=>{if(tm>=c[0])i=j});
+ if(i!=last){last=i;$('#ct').textContent=SC[i][1];$('#cs').textContent=SC[i][2];$('#cap').classList.toggle('off',i==8);$('#o7').classList.toggle('on',i==6);$('#o8').classList.toggle('on',i==7);$('#fin').classList.toggle('on',i==8)}
+ const f=tm>34.8&&tm<36.2;if(f!=lflash){lflash=f;$('#flash').classList.toggle('on',f)}
+ const sec=Math.floor(tm);if(sec!=lsec){lsec=sec;$('#tc').textContent='0:'+String(sec).padStart(2,'0')+' / 1:00'}$('#pbi').style.width=tm/60*100+'%'}
+try{if(window.THREE)init3D();else throw 0}catch(e){S3=null}
+requestAnimationFrame(fr);
+setTimeout(()=>{$('#ld').classList.add('x');if(RM)endIntro();else start()},1900);
+$('#skip').onclick=endIntro;
+/* ---------- nav ---------- */
+function wipe(f){const w=$('#wipe');w.className='in';setTimeout(()=>{f();w.className='out';setTimeout(()=>w.className='',450)},380)}
+$$('a[href^="#"]').forEach(a=>a.onclick=e=>{e.preventDefault();$('#menu').classList.remove('on');const id=a.getAttribute('href').slice(1);if(!done)endIntro();wipe(()=>scrollTo({top:id=='home'?0:$('#'+id).offsetTop-56,behavior:'instant'}))});
+$('#bg').onclick=()=>$('#menu').classList.toggle('on');
+$('#rep').onclick=()=>wipe(()=>{scrollTo({top:0,behavior:'instant'});start()});
+const links=$$('#menu a'),io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const a=links.find(l=>l.getAttribute('href')=='#'+e.target.id);links.forEach(l=>l.classList.toggle('on',l==a))}}),{threshold:.35});$$('main>section').forEach(s=>io.observe(s));
+const rv=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rv.unobserve(e.target);if(e.target.classList.contains('num'))count(e.target);if(e.target.classList.contains('bars'))$$('.bars i').forEach(i=>i.style.width=i.dataset.w+'%')}}),{threshold:.2});
+function observeRv(){$$('.rv,.num').forEach(e=>rv.observe(e))}
+function count(n){const v=+n.dataset.v,d=+n.dataset.d||0,t=performance.now();(function f(now){const p=eo((now-t)/1600);n.textContent=(v*p).toLocaleString(undefined,{minimumFractionDigits:d,maximumFractionDigits:d});if(p<1)requestAnimationFrame(f)})(t)}
+if(matchMedia('(hover:hover)').matches&&!RM){let mx=0,my=0,rx=0,ry=0;const cur=$('#cur'),ring=$('#ring');document.body.classList.add('cc');addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;cur.style.transform=`translate(${mx}px,${my}px)`});(function r(){rx+=(mx-rx)*.16;ry+=(my-ry)*.16;ring.style.transform=`translate(${rx}px,${ry}px)`;requestAnimationFrame(r)})();document.addEventListener('pointerover',e=>ring.classList.toggle('h',!!e.target.closest('a,button,summary,input,textarea,canvas')))}
+/* ---------- commands ---------- */
+const CN={all:'All',ai:'AI Chat',fun:'Entertainment',eco:'Economy',mod:'Server Management'};
+const CD=[['ai','/ask','Ask MEMO anything','Here is a short answer. Check the sources before you rely on it.'],['ai','/summarize','Summarize a thread','Summary: 3 key points, 2 open questions, 1 decision.'],['ai','/translate','Translate a message','Spanish: “Bienvenidos a la fiesta.”'],['fun','/trivia','Start a trivia round','Round 1: Which planet has the longest day? A) Mars B) Venus C) Mercury'],['fun','/music','Queue a synthwave mix','Queued 12 tracks. Now playing: Ember Drift ♪'],['fun','/arcade','Launch a mini-game','Coin Rush is ready. First to 50 points wins.'],['eco','/balance','Check your MEMO coins','Balance: 1,000 MEMO coins (virtual).'],['eco','/invest','Buy shares in a company','Bought 2 shares of Palm Bank at 88 coins each.'],['mod','/setup','Set up your server','Created #welcome, roles and auto-mod in 3 steps.'],['mod','/purge','Clear recent messages','Removed 20 messages from #general.'],['mod','/welcome','Edit the welcome message','Welcome message saved. Preview sent to you only.']];
+let cat='all',cur=CD[0],tt;
+function rc(){$('#chips').innerHTML=Object.keys(CN).map(k=>`<button class="btn ${k==cat?'on':''}" data-k="${k}">${CN[k]}</button>`).join('');$('#cgrid').innerHTML=CD.map((c,i)=>cat=='all'||c[0]==cat?`<button class="card cmd rv in" data-i="${i}"><b>${c[1]}</b><span>${c[2]}</span><em>${CN[c[0]]}</em></button>`:'').join('')}
+$('#chips').onclick=e=>{const b=e.target.closest('[data-k]');if(b){cat=b.dataset.k;rc()}};
+$('#cgrid').onclick=e=>{const b=e.target.closest('[data-i]');if(!b)return;cur=CD[+b.dataset.i];clearInterval(tt);const o='> '+cur[1]+'\n'+cur[3];let i=0;tt=setInterval(()=>{$('#term').textContent=o.slice(0,++i);if(i>=o.length)clearInterval(tt)},16)};
+$('#cp').onclick=()=>{try{navigator.clipboard.writeText(cur[1]).then(()=>toast('Copied '+cur[1]),()=>toast('Copy blocked by the browser'))}catch(e){toast('Copy is not available here')}};rc();
+/* ---------- economy ---------- */
+const ST=[{n:'Forge Motors',p:142},{n:'Palm Bank',p:88},{n:'Coin Labs',p:215},{n:'Pixel Foods',p:47}];ST.forEach((s,k)=>{s.h=Array.from({length:60},(_,i)=>s.p*(1+Math.sin(i/6+k)*.04+rd(-.015,.015)));s.p=s.h[59];s.own=0});
+let bal=1000,sel=0;
+function re(){const s=ST[sel];$('#sn').textContent=s.n;$('#sp').textContent=s.p.toFixed(1);$('#bal').textContent=Math.round(bal).toLocaleString();$('#own').textContent='You own '+s.own+' share'+(s.own==1?'':'s');$('#pv').textContent='Holdings value: '+Math.round(ST.reduce((a,b)=>a+b.own*b.p,0))+' coins';
+ $('#stl').innerHTML=ST.map((t,i)=>{const ch=(t.p/t.h[0]-1)*100;return`<button class="st ${i==sel?'on':''}" data-s="${i}"><span>${t.n}</span><span>${t.p.toFixed(1)} <b class="${ch>=0?'up':'dn'}">${ch>=0?'+':''}${ch.toFixed(1)}%</b></span></button>`}).join('');
+ const c=$('#ec'),x=c.getContext('2d'),dp=devicePixelRatio||1,w=c.clientWidth,h=c.clientHeight;if(!w)return;c.width=w*dp;c.height=h*dp;x.scale(dp,dp);x.clearRect(0,0,w,h);const d=s.h,mn=Math.min(...d)*.98,mx=Math.max(...d)*1.02,pt=d.map((v,i)=>[i*w/59,h-(v-mn)/(mx-mn)*(h-10)-5]);
+ x.strokeStyle='rgba(255,138,43,.12)';for(let i=1;i<5;i++){x.beginPath();x.moveTo(0,h*i/5);x.lineTo(w,h*i/5);x.stroke()}
+ const g=x.createLinearGradient(0,0,0,h);g.addColorStop(0,'rgba(255,90,31,.5)');g.addColorStop(1,'rgba(232,50,26,0)');x.beginPath();pt.forEach((p,i)=>i?x.lineTo(...p):x.moveTo(...p));x.lineTo(w,h);x.lineTo(0,h);x.fillStyle=g;x.fill();
+ x.beginPath();pt.forEach((p,i)=>i?x.lineTo(...p):x.moveTo(...p));x.strokeStyle='#ffd166';x.lineWidth=2.5;x.shadowColor='#ff5a1f';x.shadowBlur=12;x.stroke()}
+setInterval(()=>{if(document.hidden)return;ST.forEach(s=>{s.p=Math.max(5,s.p*(1+rd(-.02,.02)));s.h.push(s.p);s.h.shift()});re()},1200);addEventListener('resize',re);
+$('#stl').onclick=e=>{const b=e.target.closest('[data-s]');if(b){sel=+b.dataset.s;re()}};
+$('#buy').onclick=()=>{const s=ST[sel];if(bal<s.p)return toast('Not enough virtual coins');bal-=s.p;s.own++;re();toast('Bought 1 share of '+s.n)};
+$('#sell').onclick=()=>{const s=ST[sel];if(!s.own)return toast('You do not own any '+s.n+' shares');bal+=s.p;s.own--;re();toast('Sold 1 share of '+s.n)};re();
+/* ---------- game ---------- */
+(()=>{const c=$('#gc'),x=c.getContext('2d'),W=480,H=300;let run=0,px=W/2,sc=0,lv=3,it=[],tk=0,best=0;
+ const mv=e=>{const r=c.getBoundingClientRect();px=cl((e.clientX-r.left)/r.width*W,30,W-30)};c.addEventListener('pointermove',mv);c.addEventListener('pointerdown',mv);
+ addEventListener('keydown',e=>{if(!run)return;if(e.key=='ArrowLeft'){px=cl(px-30,30,W-30);e.preventDefault()}if(e.key=='ArrowRight'){px=cl(px+30,30,W-30);e.preventDefault()}});
+ function draw(msg){x.fillStyle='#0c0907';x.fillRect(0,0,W,H);x.strokeStyle='rgba(232,50,26,.35)';for(let i=0;i<10;i++){x.beginPath();x.moveTo(0,H-i*i*3.2);x.lineTo(W,H-i*i*3.2);x.stroke()}
+  it.forEach(o=>{x.beginPath();x.arc(o.x,o.y,11,0,7);x.fillStyle=o.b?'#e8321a':'#ffd166';x.shadowColor=x.fillStyle;x.shadowBlur=14;x.fill();x.shadowBlur=0;x.fillStyle=o.b?'#fff':'#8a5a00';x.font='bold 12px sans-serif';x.textAlign='center';x.fillText(o.b?'✕':'M',o.x,o.y+4)});
+  x.fillStyle='#ff8a2b';x.shadowColor='#ff8a2b';x.shadowBlur=16;x.fillRect(px-30,H-22,60,8);x.shadowBlur=0;if(msg){x.fillStyle='#fff';x.font='bold 22px sans-serif';x.textAlign='center';x.fillText(msg,W/2,H/2)}}
+ function loop(){if(!run)return;tk++;if(tk%(Math.max(12,28-(sc>>2))))0;if(tk%Math.max(12,28-(sc>>2))==0)it.push({x:rd(20,W-20),y:-10,b:Math.random()<.26,v:rd(2,3)+sc*.04});
+  it.forEach(o=>o.y+=o.v);it=it.filter(o=>{if(o.y>H-30&&o.y<H-6&&Math.abs(o.x-px)<36){if(o.b)lv--;else sc++;return false}return o.y<H+10});
+  $('#gsc').textContent=sc;$('#glv').textContent=lv;if(lv<=0){run=0;best=Math.max(best,sc);$('#gbs').textContent=best;$('#gs').textContent='Play again';draw('Game over · '+sc+' points');return}draw();requestAnimationFrame(loop)}
+ $('#gs').onclick=()=>{if(run)return;run=1;sc=0;lv=3;it=[];tk=0;$('#gs').textContent='Playing…';loop()};draw('Press Start game')})();
+/* ---------- community / support ---------- */
+const SG=[['Daily trivia streaks',12],['Custom coin themes',8]];
+function rs2(){$('#sl').innerHTML=SG.map((s,i)=>`<div class="vote"><span>${s[0]}</span><button class="btn sm" data-v="${i}">▲ ${s[1]}</button></div>`).join('')}
+$('#sl').onclick=e=>{const b=e.target.closest('[data-v]');if(b){SG[b.dataset.v][1]++;rs2()}};
+$('#sa').onclick=()=>{const v=$('#si').value.trim();if(!v)return toast('Type an idea first');SG.unshift([v.slice(0,80),1]);$('#si').value='';rs2();toast('Suggestion added')};rs2();
+$('#cf').onsubmit=e=>{e.preventDefault();e.target.reset();toast('Demo form: nothing was sent')};
+observeRv();
+</script>
+</body>
+</html>
